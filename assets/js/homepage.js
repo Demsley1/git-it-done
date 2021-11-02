@@ -5,9 +5,11 @@ var repoSearchTerm = document.querySelector("#repo-search-term");
 
 var formSubmitHandler = function(event) {
   var username = nameInputEl.value.trim();
+  event.preventDefault();
 
   if (username) {
     getUserRepos(username);
+    console.log(username);
     nameInputEl.value = "";
   } else {
    alert("Please enter a GitHub username");
@@ -16,7 +18,8 @@ var formSubmitHandler = function(event) {
 
 var getUserRepos = function(user) {
   // format the github api url
-  var apiUrl = "https://api.github.com/users/" + user + "/repos";
+  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
+  console.log(apiUrl);
   
   // make a request to the url
   fetch(apiUrl)
